@@ -1,0 +1,23 @@
+03:31:06
+
+php artisan make:controller ShowCarController
+
+php artisan make:controller HomeController
+
+php artisan make:view index
+
+php artisan make:view layouts.app
+
+php artisan make:view layouts.clean
+
+php artisan make:view layouts.partials.header
+
+php artisan make:controller SignupControll
+
+php artisan make:view auth.signup
+
+php artisan make:controller LoginController
+
+php artisan make:view auth.login
+php artisan make:component Card --view
+php artisan make:component button --view
