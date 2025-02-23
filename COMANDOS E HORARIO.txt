@@ -1,4 +1,4 @@
-03:31:06
+03:54:25
 
 php artisan make:controller ShowCarController
 
@@ -21,3 +21,8 @@ php artisan make:controller LoginController
 php artisan make:view auth.login
 php artisan make:component Card --view
 php artisan make:component button --view
+
+php artisan make:component TestComponent -inline
+
+php artisan make:component AppLayout
+php artisan make:component BaseLayout
