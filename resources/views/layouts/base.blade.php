@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="css/app.css" />
 </head>
 
-<body>
+<body @isset($cssClass) class="{{$cssClass}}" @endisset>
+
+    {{$slot}}
 
     @yield('childContent');
 

@@ -1,4 +1,5 @@
 <x-app-layout>
+  
   <main>
 
     @php
@@ -453,8 +454,7 @@
           </button>
         </div>
         <h2 class="car-item-title">2016 - Lexus RX200t</h2>
-        <p class="car-item-price">$25,000</p>
-        <hr />
+        <p class="car-item-price">$25,000</p><hr />
         <p class="m-0">
           <span class="car-item-badge">SUV</span>
           <span class="car-item-badge">Electric</span>
@@ -468,10 +468,9 @@
   </main>
 
   @section('footerLinks')
-  @parent
-  <a href="#">4</a>
-  <a href="#">3</a>
-  @endsection
+  <a href="#">a</a>
+  <a href="#">b</a>
+@endsection
 
 </x-app-layout>
 

@@ -1,4 +1,9 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('tittle', 'Home Page')
+
+@section('content')
+
   <main>
 
     @php
@@ -468,10 +473,7 @@
   </main>
 
   @section('footerLinks')
-  @parent
-  <a href="#">4</a>
-  <a href="#">3</a>
+    <a href="#">a</a>
+    <a href="#">b</a>
   @endsection
-
-</x-app-layout>
-
+@endsection
