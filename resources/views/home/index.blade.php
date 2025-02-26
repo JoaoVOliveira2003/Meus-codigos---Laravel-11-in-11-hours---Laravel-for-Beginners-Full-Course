@@ -455,7 +455,7 @@
         <h2 class="car-item-title">2016 - Lexus RX200t</h2>
         <p class="car-item-price">$25,000</p>
         <hr />
-        <p class="m-0">
+        <p class="m-0">search-form
           <span class="car-item-badge">SUV</span>
           <span class="car-item-badge">Electric</span>
         </p>
@@ -468,8 +468,8 @@
   </main>
 
   <x-slot:footerLinks>
-  <a href="#">Link 3</a>
-  <a href="#">Link 4</a>    
+  <a href="#">4</a>
+  <a href="#">3</a>    
   </x-slot:footerLinks>
 
 

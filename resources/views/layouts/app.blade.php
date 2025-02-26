@@ -1,7 +1,8 @@
 @props(['title' => '','footerLinks'=>''])
 
 <x-base-layout :$title>
-  @include('layouts.partials.header')
+  {{-- @include('layouts.partials.header') --}}
+  <x-layouts.header />  
 
   {{$slot}}
 
@@ -16,3 +17,4 @@
   </footer>
 
 </x-base-layout>
+
