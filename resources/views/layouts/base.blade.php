@@ -1,3 +1,5 @@
+@props(['bodyClass'=>'','title'=>''])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -5,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title') | Car Selling Website</title>
+    <title>{{$title}}Car Selling Website</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +19,7 @@
     <link rel="stylesheet" href="css/app.css" />
 </head>
 
-<body @isset($cssClass) class="{{$cssClass}}" @endisset>
+<body @if($bodyClass) class="{{$bodyClass}}"  @endif >
 
     {{$slot}}
 

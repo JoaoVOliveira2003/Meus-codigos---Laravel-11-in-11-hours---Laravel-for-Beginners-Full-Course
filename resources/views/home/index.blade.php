@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="Home Page">
   <main>
 
     @php
@@ -467,11 +467,11 @@
     <!--/ New Cars -->
   </main>
 
-  @section('footerLinks')
-  @parent
-  <a href="#">4</a>
-  <a href="#">3</a>
-  @endsection
+  <x-slot:footerLinks>
+  <a href="#">Link 3</a>
+  <a href="#">Link 4</a>    
+  </x-slot:footerLinks>
+
 
 </x-app-layout>
 
