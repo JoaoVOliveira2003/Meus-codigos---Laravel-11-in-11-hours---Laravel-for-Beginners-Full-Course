@@ -26,3 +26,8 @@ php artisan make:component TestComponent -inline
 
 php artisan make:component AppLayout
 php artisan make:component BaseLayout
+
+php artisan make:component GoogleButton --view
+php artisan make:component FbButton --view 
+
+php artisan make:component guestLayout
