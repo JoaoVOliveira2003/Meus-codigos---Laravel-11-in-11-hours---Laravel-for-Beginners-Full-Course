@@ -1,4 +1,4 @@
-04:07:00
+04:29:29
 
 php artisan make:controller ShowCarController
 
@@ -31,3 +31,5 @@ php artisan make:component GoogleButton --view
 php artisan make:component FbButton --view 
 
 php artisan make:component guestLayout
+
+php artisan make:component car-item --view
