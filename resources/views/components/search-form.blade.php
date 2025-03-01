@@ -3,10 +3,13 @@
             <section class="find-a-car">
                 <div class="container">
                   <form
-                    action={{$action}}
-                    method={{$method}}
+                    action="{{ url('/car/search')}}"
+                    method="GET"
                     class="find-a-car-form card flex p-medium"
                   >
+
+
+
                     <div class="find-a-car-inputs">
                       <div>
                         <select id="makerSelect" name="maker_id">

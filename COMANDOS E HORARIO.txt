@@ -1,4 +1,4 @@
-04:29:29
+04:43:08
 
 php artisan make:controller ShowCarController
 
@@ -33,3 +33,11 @@ php artisan make:component FbButton --view
 php artisan make:component guestLayout
 
 php artisan make:component car-item --view
+
+php artisan make:controller CarController --resource
+
+php artisan make:view car.index
+php artisan make:view car.show
+php artisan make:view car.edit
+php artisan make:view car.create
+php artisan make:view car.search
