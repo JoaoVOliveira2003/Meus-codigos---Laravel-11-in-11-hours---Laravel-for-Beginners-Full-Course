@@ -1,4 +1,4 @@
-04:43:08
+05:34:40
 
 php artisan make:controller ShowCarController
 
@@ -41,3 +41,28 @@ php artisan make:view car.show
 php artisan make:view car.edit
 php artisan make:view car.create
 php artisan make:view car.search
+
+php artisan list migrate
+php artisan migrate:status
+php artisan migrate:fresh
+php artisan migrate:refresh
+php artisan migrate:reset
+php artisan migrate
+
+php artisan make:migration create_car_types_table
+php artisan make:migration create_fuel_types_table
+
+php artisan migrate --pretend
+
+php artisan make:migration create_makers_table
+php artisan make:migration create_models_table
+php artisan make:migration create_states_table
+php artisan make:migration create_cities_table
+
+php artisan make:migration create_cars_table
+php artisan make:migration create_car_features_table
+
+php artisan make:migration create_car_images_table
+php artisan make:migration create_favorite_car_table
+
+php artisan migrate:rollback
