@@ -4,7 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+
 class Car extends Model
 {
     use HasFactory,SoftDeletes;
@@ -25,4 +30,25 @@ class Car extends Model
         'description',
         'published_at',
     ];
+
+    public function features(): HasOne{
+        return $this->hasOne(CarFeatures::class, 'car_id');
+    }
+
+    public function primaryImage(): HasOne
+    {
+        return $this->hasOne(CarImage::class)
+        ->oldestOfMany('position');
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(CarImage::class);   
+    }
+
+    public function carType(): BelongsTo {
+        return $this->belongsTo(CarType::class, 'car_type_id'); // Ou o nome da coluna correta
+    }
+    
+    
 }

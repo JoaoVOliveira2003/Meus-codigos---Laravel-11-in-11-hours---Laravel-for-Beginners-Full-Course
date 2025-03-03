@@ -1,0 +1,160 @@
+<?php
+$car = new Car();
+// ================= SELEÇÃO DE DADOS =================
+
+// Seleciona todos os carros
+dump(Car::get());
+
+// Seleciona carros publicados
+dump(Car::where('published_at', '!=', null)->get());
+
+// Seleciona o primeiro carro publicado
+dump(Car::where('published_at', '!=', null)->first());
+
+// Seleciona um carro pelo ID
+dump(Car::find(2));
+
+// Seleciona o carro publicado mais recente de um usuário
+dump(Car::where('published_at', '!=', null)
+    ->where('user_id', 1)
+    ->orderBy('published_at', 'desc')
+    ->limit(1)
+    ->get());
+
+// Seleciona carros com preço maior que 200
+dump(Car::where('price', '>', 200)->get());
+
+// Seleciona uma montadora específica
+dump(Maker::where('name', 'Toyota')->first());
+
+
+// ================= INSERÇÃO DE DADOS =================
+
+// Criando um novo carro com atribuição manual
+$car = new Car();
+$car->maker_id = 1;
+$car->model_id = 1;
+$car->year = 2023;
+$car->price = 25000;
+$car->vin = '1HGBH41JXMN109186';
+$car->mileage = 15000;
+$car->car_type_id = 2;
+$car->fuel_type_id = 1;
+$car->user_id = 1;
+$car->city_id = 1;
+$car->address = '123 Main St, Los Angeles, CA';
+$car->phone = '555-1234';
+$car->description = null;
+$car->published_at = now();
+$car->save();
+
+// Criando um novo carro com um array de dados
+$carData = [
+    'maker_id' => 2,
+    'model_id' => 1,
+    'year' => 2023,
+    'price' => 25000,
+    'vin' => '1HGBH41JXMN109186',
+    'mileage' => 15000,
+    'car_type_id' => 2,
+    'fuel_type_id' => 1,
+    'user_id' => 1,
+    'city_id' => 1,
+    'address' => '123 Main St, Los Angeles, CA',
+    'phone' => '555-1234',
+    'description' => null,
+    'published_at' => '2025-03-03 16:36:39',
+];
+
+Car::create($carData);
+
+$car2 = new Car();
+$car2->fill($carData);
+$car2->save();
+
+$car3 = new Car($carData);
+$car3->save();
+
+// Criando um novo tipo de combustível
+FuelType::create(['name' => 'nuclear']);
+
+
+// ================= ATUALIZAÇÃO DE DADOS =================
+
+// Atualizando o preço de um carro específico
+$car = Car::find(1);
+$car->price = 1000;
+$car->save();
+
+dump(
+    Car::updateOrCreate(
+        ['vin' => '999'],  // Condição para buscar o registro
+        [
+            'price' => 1000,
+            'maker_id' => 1,
+            'model_id' => 1
+        ]
+    )
+);
+
+// Publicando todos os carros de um usuário
+Car::where('published_at', null)
+    ->where('user_id', 1)
+    ->update(['published_at' => now()]);
+
+// Atualizando o preço de um carro pelo ID
+Car::where('id', 1)->update(['price' => 15000]);
+
+
+// ================= EXCLUSÃO DE DADOS =================
+
+// Deletando um carro pelo ID
+$car = Car::find(3);
+$car->delete();
+
+// Deletando múltiplos carros pelo ID
+Car::destroy([3, 4]);
+
+// Deletando carros não publicados de um usuário
+Car::where('published_at', null)
+    ->where('user_id', 1)
+    ->delete();
+
+// Deletando todos os registros da tabela
+Car::truncate();
+
+// Deletando todos os carros com ano inferior a 2000
+Car::where('year', '<', 2000)->delete();
+
+
+         $car = Car::find(4);        
+        // dump($car);
+        // dump($car->features,$car->primaryImage);
+        // $car->features->update(['abs'=>0]);
+        // $car = new Car();
+
+        // Crie o novo objeto CarFeatures com os valores desejados
+        $carFeatures = new CarFeatures([
+            'abs' => false,
+            'air_conditioning' => false,
+            'power_windows' => false,
+            'power_door_locks' => false,
+            'cruise_control' => false,
+            'bluetooth_connectivity' => false,
+            'remote_start' => false,
+            'gps_navigation' => false,
+            'heated_seats' => false,
+            'climate_control' => false,
+            'rear_parking_sensors' => false,
+            'leather_seats' => false,
+        ]);
+        
+        $carFeatures->car_id = $car->id; 
+        $car->features()->save($carFeatures);
+---------
+                $car = Car::find(id: 4);
+        $image= new CarImage(['image_path'=>'algo','position'=>2]);
+        $car -> images() -> save($image);
+
+                $car = Car::find(id: 4);
+        dd($car->carType);
