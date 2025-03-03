@@ -1,4 +1,4 @@
-05:34:40
+05:50:38
 
 php artisan make:controller ShowCarController
 
@@ -66,3 +66,14 @@ php artisan make:migration create_car_images_table
 php artisan make:migration create_favorite_car_table
 
 php artisan migrate:rollback
+
+php artisan make:model FuelType 
+php artisan model:show FuelType  -- esse daqui é o select * from FuelType
+
+php artisan make:model CarType
+php artisan make:model Maker
+php artisan make:model Model
+php artisan make:model State
+php artisan make:model City 
+php artisan make:model CarFeatures 
+php artisan make:model CarImages 
