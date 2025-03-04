@@ -1,4 +1,4 @@
-07:30:20
+08:15:80
 
 php artisan make:controller ShowCarController
 
@@ -77,3 +77,23 @@ php artisan make:model State
 php artisan make:model City 
 php artisan make:model CarFeatures 
 php artisan make:model CarImages 
+
+php artisan make:factory MakerFactory
+
+php artisan make:factory ModelFactory
+
+php artisan make:factory ModelFactory
+
+php artisan make:factory CarTypeFactory
+
+php artisan make:factory FuelTypeFactory
+
+php artisan make:factory StateFactory
+
+php artisan make:factory CityFactory
+
+php artisan make:factory CarFactory
+
+php artisan make:factory CarFeaturesFactory
+
+php artisan make:factory CarImageFactory

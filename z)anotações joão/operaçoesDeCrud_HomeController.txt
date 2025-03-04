@@ -183,3 +183,21 @@ $cars = Car::whereBelongsTo($carType)->get();
 
         $user ->favoriteCars() -> detach([4]);
     
+    --
+
+            // Criando um novo Maker utilizando a factory
+        $maker = Maker::factory()->count(10)->create();
+        // Mostrando os dados para debugar
+        dd($maker);    
+
+                User::factory()->count(3)->create(['name'=>'Zura']);
+
+        User::factory()->count(3)->sequence(['name'=>'joao'],['name'=>'maria'])->create();
+
+---
+Erro
+        $maker = Maker::factory()->create();
+        Maker::factory()
+        ->count(5)
+        ->for($maker)
+        ->create();    

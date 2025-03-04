@@ -9,23 +9,16 @@ use App\Models\CarFeatures;
 use App\Models\FuelType;
 use App\Models\carType;
 use Illuminate\Http\Request;
+use App\Models\Maker;
+use Database\Factories\MakerFactory;
 
 class HomeController extends Controller
 {
     public function index()
     {
 
-    // $car = Car::find(4);
-    // dd($car->favouredUsers);
+        User::factory()->has(Car::factory()->count(5),'favoriteCars')->create();
 
-    // $user = User::find(1);
-    // dd($user->favoriteCars);
-
-    $user = User::find(1);
-
-    $user ->favoriteCars() -> detach([4]);
-    
-
-    return view("home.index");
+        return view("home.index");
     }
 }
