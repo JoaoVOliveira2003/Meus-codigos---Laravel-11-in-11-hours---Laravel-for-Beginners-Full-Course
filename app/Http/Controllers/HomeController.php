@@ -17,8 +17,6 @@ class HomeController extends Controller
     public function index()
     {
 
-        User::factory()->has(Car::factory()->count(5),'favoriteCars')->create();
-
         return view("home.index");
     }
 }

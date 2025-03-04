@@ -1,4 +1,4 @@
-08:15:80
+08:16:80
 
 php artisan make:controller ShowCarController
 
@@ -58,10 +58,8 @@ php artisan make:migration create_makers_table
 php artisan make:migration create_models_table
 php artisan make:migration create_states_table
 php artisan make:migration create_cities_table
-
 php artisan make:migration create_cars_table
 php artisan make:migration create_car_features_table
-
 php artisan make:migration create_car_images_table
 php artisan make:migration create_favorite_car_table
 
@@ -79,21 +77,17 @@ php artisan make:model CarFeatures
 php artisan make:model CarImages 
 
 php artisan make:factory MakerFactory
-
 php artisan make:factory ModelFactory
-
 php artisan make:factory ModelFactory
-
 php artisan make:factory CarTypeFactory
-
 php artisan make:factory FuelTypeFactory
-
 php artisan make:factory StateFactory
-
 php artisan make:factory CityFactory
-
 php artisan make:factory CarFactory
-
 php artisan make:factory CarFeaturesFactory
-
 php artisan make:factory CarImageFactory
+
+php artisan make:seeder UsersSeeder
+php artisan db:seed --class=UsersSeeder
+
+php artisan migrate:fresh --seed
