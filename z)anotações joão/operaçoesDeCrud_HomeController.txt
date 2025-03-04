@@ -158,3 +158,28 @@ Car::where('year', '<', 2000)->delete();
 
                 $car = Car::find(id: 4);
         dd($car->carType);
+
+        --
+        // Encontrar o tipo de carro 'Hatchback'
+$carType = CarType::where('name', 'Hatchback')->first();
+// Buscar os carros pertencentes ao tipo de carro encontrado
+$cars = Car::whereBelongsTo($carType)->get();
+--
+
+    $car->carType()->associate($carType);
+    $car->save();
+
+        $carType = CarType::where('name', 'Sedan')->first();
+
+    // $car->car_type_id = $carType->id;
+    // $car->save();
+    $car->carType()->associate($carType);
+    $car->save();
+
+        $user = User::find(1);
+    $user->favoriteCars()->attach([4, 4]);
+
+        $user ->favoriteCars() -> syncWithPivotValues([4],['']);
+
+        $user ->favoriteCars() -> detach([4]);
+    

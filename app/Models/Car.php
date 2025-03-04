@@ -4,15 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+/*
+Infelizmente não é possivel utilizar algo do tipo:
+use Illuminate\Database\Eloquent\Relations\;
+
+Mas pode se utilizar 
+use Illuminate\Database\Eloquent\Relations\{HasMany, HasOne, BelongsTo, BelongsToMany};
+
+*/
 
 
 class Car extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'maker_id',
@@ -31,24 +41,51 @@ class Car extends Model
         'published_at',
     ];
 
-    public function features(): HasOne{
+    //talvez de problema aqui
+    public function carType(): BelongsTo
+    {
+        return $this->belongsTo(CarType::class, 'car_type_id');
+    }
+
+    public function fuelType(): BelongsTo{
+        return $this->belongsTo(FuelType::class);
+    }
+
+    public function maker(): BelongsTo{
+        return $this->belongsTo(Maker::class);
+    }
+
+    public function model(): BelongsTo{
+        return $this->belongsTo(Model::class);
+    }
+
+    public function owner(): BelongsTo{
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function city(): BelongsTo{
+        return $this->belongsTo(City::class );
+    }
+
+    public function features(): HasOne
+    {
         return $this->hasOne(CarFeatures::class, 'car_id');
     }
 
     public function primaryImage(): HasOne
     {
         return $this->hasOne(CarImage::class)
-        ->oldestOfMany('position');
+            ->oldestOfMany('position');
     }
 
     public function images(): HasMany
     {
-        return $this->hasMany(CarImage::class);   
+        return $this->hasMany(CarImage::class);
     }
 
-    public function carType(): BelongsTo {
-        return $this->belongsTo(CarType::class, 'car_type_id'); // Ou o nome da coluna correta
+
+    public function favouredUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'favourite_car', 'car_id');
     }
-    
-    
 }

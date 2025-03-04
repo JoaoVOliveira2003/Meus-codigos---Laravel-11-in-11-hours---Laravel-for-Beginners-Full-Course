@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\User;
 use App\Models\CarImage;
 use App\Models\CarFeatures;
 use App\Models\FuelType;
@@ -14,18 +15,17 @@ class HomeController extends Controller
     public function index()
     {
 
-// Encontrar o carro com id 4
-$car = Car::find(4);
+    // $car = Car::find(4);
+    // dd($car->favouredUsers);
 
-// Encontrar o tipo de carro 'Hatchback'
-$carType = CarType::where('name', 'Hatchback')->first();
+    // $user = User::find(1);
+    // dd($user->favoriteCars);
 
-// Buscar os carros pertencentes ao tipo de carro encontrado
-$cars = Car::whereBelongsTo($carType)->get();
+    $user = User::find(1);
 
-dd($cars);
+    $user ->favoriteCars() -> detach([4]);
+    
 
-
-        return view("home.index");
+    return view("home.index");
     }
 }
