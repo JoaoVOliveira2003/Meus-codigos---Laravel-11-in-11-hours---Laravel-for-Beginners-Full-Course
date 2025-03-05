@@ -72,11 +72,12 @@ class Car extends Model
         return $this->hasOne(CarFeatures::class, 'car_id');
     }
 
+    //ver posteriormente
     public function primaryImage(): HasOne
     {
-        return $this->hasOne(CarImage::class)
-            ->oldestOfMany('position');
+        return $this->hasOne(CarImage::class)->orderBy('position', 'asc');
     }
+    
 
     public function images(): HasMany
     {

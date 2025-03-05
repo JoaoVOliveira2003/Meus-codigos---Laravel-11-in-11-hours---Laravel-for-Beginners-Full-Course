@@ -43,6 +43,15 @@ class CarController extends Controller
     }
 
     public function search(){
-        return view('car.search');
+        $query = Car::where('published_at', '<', now()) // Use 'now()' sem aspas para pegar a data atual
+                    ->orderBy('published_at', 'desc');
+        
+        $carCount = $query->count();
+    
+        $cars = $query->limit(30)->get();
+    
+        // Passando o nome da variável para corresponder com o que você quer na view.
+        return view('car.search', ['cars' => $cars, 'carCount' => $carCount]);
     }
+    
 }
