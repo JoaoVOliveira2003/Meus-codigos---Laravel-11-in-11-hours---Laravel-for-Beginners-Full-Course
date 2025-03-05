@@ -28,7 +28,9 @@
                     </svg>
                 </a>
                 <ul class="submenu">
-                    <li><a href="my_cars.html">My Cars</a></li>
+                    {{-- <li><a href="my_cars.html">My Cars</a></li> --}}
+                    <li><a href="/car">My Cars</a></li>
+
                     <li><a href="watchlist.html">My Favourite Cars</a></li>
                     <li>
                         <form action="#" method="post">

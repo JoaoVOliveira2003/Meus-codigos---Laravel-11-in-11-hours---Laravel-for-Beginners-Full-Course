@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use Carbon\Carbon;
+
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -40,6 +42,14 @@ class Car extends Model
         'description',
         'published_at',
     ];
+    // Car.php
+    public function carModel()
+    {
+        return $this->belongsTo(CarModel::class, 'model_id');
+    }
+
+
+
 
     //talvez de problema aqui
     public function carType(): BelongsTo
@@ -47,24 +57,29 @@ class Car extends Model
         return $this->belongsTo(CarType::class, 'car_type_id');
     }
 
-    public function fuelType(): BelongsTo{
+    public function fuelType(): BelongsTo
+    {
         return $this->belongsTo(FuelType::class);
     }
 
-    public function maker(): BelongsTo{
+    public function maker(): BelongsTo
+    {
         return $this->belongsTo(Maker::class);
     }
 
-    public function model(): BelongsTo{
+    public function model(): BelongsTo
+    {
         return $this->belongsTo(Model::class);
     }
 
-    public function owner(): BelongsTo{
-        return $this->belongsTo(User::class,'user_id');
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function city(): BelongsTo{
-        return $this->belongsTo(City::class );
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
     }
 
     public function features(): HasOne
@@ -77,7 +92,7 @@ class Car extends Model
     {
         return $this->hasOne(CarImage::class)->orderBy('position', 'asc');
     }
-    
+
 
     public function images(): HasMany
     {
@@ -88,5 +103,9 @@ class Car extends Model
     public function favouredUsers(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favourite_car', 'car_id');
+    }
+
+    public function getCreateDate(): string{
+        return (new Carbon($this->created_at))->format('d-m-Y');
     }
 }

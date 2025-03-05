@@ -1,20 +1,23 @@
 <x-app-layout>
     <main>
         <div class="container">
-          <h1 class="car-details-page-title">{{$car->maker->name}} {{$car->model->name}} - {{$car->year}}</h1>
+          <h1 class="car-details-page-title">{{$car->maker->name}} - {{$car->CarModel->name}} {{$car->year}}</h1>
           <div class="car-details-region">{{$car->city->name}} {{$car->published_at}} </div>
   
           <div class="car-details-content">
             <div class="car-images-and-description">
               <div class="car-images-carousel">
+                
                 <div class="car-image-wrapper">
                   <img
-                    src="{{$car->primaryImage->image_path}} "
+                    src="{{$car->primaryImage->image_path}}"
                     alt=""
                     class="car-active-image"
                     id="activeImage"
-                  />
+                    style="width: 100%; height: auto;" />
                 </div>
+                
+                
                 <div class="car-image-thumbnails">
                   @foreach ($car->images as $image)
                       <img src="{{$image->image_path}}" alt="">
@@ -66,197 +69,28 @@
                 <h2 class="car-details-title">Car Specifications</h2>
   
                 <ul class="car-specifications">
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    Air Conditioning
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    Power Windows
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    Power Door Locks
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    ABS
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: red"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-  
-                    Cruise Control
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: red"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-  
-                    Bluetooth Connectivity
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: red"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-  
-                    Remote Start
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    GPS Navigation System
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    Heated Seats
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: rgb(0, 192, 102)"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    Climate Control
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: red"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-  
-                    Rear Parking Sensors
-                  </li>
-                  <li>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      style="color: red"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm3 10.5a.75.75 0 0 0 0-1.5H9a.75.75 0 0 0 0 1.5h6Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-  
-                    Leather Seats
-                  </li>
+
+                  <x-car-specification :value="$car->features->abs">ABS</x-car-specification>
+                  <x-car-specification :value="$car->features->air_conditioning">Ar-condicionado</x-car-specification>
+                  <x-car-specification :value="$car->features->power_windows">Vidros elétricos</x-car-specification>
+                  <x-car-specification :value="$car->features->power_door_locks">Travas elétricas</x-car-specification>
+                  <x-car-specification :value="$car->features->cruise_control">Controle de cruzeiro</x-car-specification>
+                  <x-car-specification :value="$car->features->bluetooth_connectivity">Conectividade Bluetooth</x-car-specification>
+                  <x-car-specification :value="$car->features->remote_start">Partida remota</x-car-specification>
+                  <x-car-specification :value="$car->features->gps_navigation">GPS</x-car-specification>
+                  <x-car-specification :value="$car->features->heated_seats">Assentos aquecidos</x-car-specification>
+                  <x-car-specification :value="$car->features->climate_control">Controle de clima</x-car-specification>
+                  <x-car-specification :value="$car->features->rear_parking_sensors">Sensores de estacionamento traseiro</x-car-specification>
+                  <x-car-specification :value="$car->features->leather_seats">Assentos de couro</x-car-specification>
+                  <x-car-specification :value="$car->features->created_at">Data de criação</x-car-specification>
+                  <x-car-specification :value="$car->features->updated_at">Última atualização</x-car-specification>
+                  
                 </ul>
               </div>
             </div>
             <div class="car-details card">
               <div class="flex items-center justify-between">
-                <p class="car-details-price">$25,000</p>
+                <p class="car-details-price">${{$car->price}}</p>
                 <button class="btn-heart">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -280,23 +114,36 @@
                 <tbody>
                   <tr>
                     <th>Maker</th>
-                    <td>{{car->maker->name}}</td>
+                    <td>{{$car->maker->name}}</td>
                   </tr>
                   <tr>
                     <th>Model</th>
-                    <td>{{car->model->name}}</td>
+                    <td>{{$car->CarModel->name}}</td>
+                   
                   </tr>
                   <tr>
                     <th>Year</th>
-                    <td>{{car->year}}</td>
+                    <td>{{$car->year}}</td>
+                  </tr>
+                  <tr>
+                    <th>Vin</th>
+                    <td>{{$car->vin}}</td>
                   </tr>
                   <tr>
                     <th>Car Type</th>
-                    <td>{{car->carType->name}}</td>
+                    <td>{{$car->carType->name}}</td>
                   </tr>
                   <tr>
                     <th>Fuel Type</th>
-                    <td>{{car->FuelType->name}}</td>
+                    <td>{{$car->FuelType->name}}</td>
+                  </tr>
+                  <tr>
+                    <th>Mileage</th>
+                    <td>{{$car->vin}}</td>
+                  </tr>
+                  <tr>
+                    <th>Adress Type</th>
+                    <td>{{$car->address}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -309,11 +156,11 @@
                   class="car-details-owner-image"
                 />
                 <div>
-                  <h3 class="car-details-owner">{{car->owner}}</h3>
-                  <div class="text-muted">5 cars</div>
+                  <h3 class="car-details-owner">{{$car->owner->name}}</h3>
+                  <div class="text-muted">{{$car->owner->cars()->count()}}</div>
                 </div>
               </div>
-              <a href="tel:+995557123***" class="car-details-phone">
+              <a href="tel:{{\Illuminate\Support\Str::mask($car->phone,'*',-3)}}" class="car-details-phone">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -329,7 +176,7 @@
                   />
                 </svg>
   
-                +995557123***
+                {{\Illuminate\Support\Str::mask($car->phone,'*',-3)}}
                 <span class="car-details-phone-view">view full number</span>
               </a>
             </div>

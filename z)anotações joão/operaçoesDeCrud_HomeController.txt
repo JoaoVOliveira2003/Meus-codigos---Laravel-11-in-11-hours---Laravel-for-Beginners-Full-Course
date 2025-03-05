@@ -202,3 +202,8 @@ Erro
         ->for($maker)
         ->create();    
 
+
+        $cars = Car::where('published_at','<','now')
+        ->orderBy('published_at','desc')
+        ->limit(10)
+        ->get();
