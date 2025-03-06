@@ -46,7 +46,7 @@
     
     <hr />
     
-    <p class="m-0">Procure:
+    <p class="m-0">
       <span class="car-item-badge">{{ $car->carType->name }}</span>
       <span class="car-item-badge">{{ $car->fuelType->name }}</span>
     </p>
